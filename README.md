@@ -134,6 +134,14 @@ TeenHealth is a wellness tracking tool intended to **supplement** — not replac
 
 ---
 
+## Availability
+
+Currently available in **developer mode only** — the app must be built and installed via Xcode directly onto your device. It is not yet available on the App Store.
+
+---
+
 ## License
 
-MIT
+© 2026 Paul Son. All Rights Reserved.
+
+This project is publicly visible for portfolio purposes. You may not copy, distribute, modify, or use any part of this code for your own projects without explicit written permission from the author.
