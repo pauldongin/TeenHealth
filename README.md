@@ -6,35 +6,11 @@ TeenHealth is designed as a **supplement to clinical care**, not a replacement. 
 
 ---
 
-## Screenshots
+## App Icon
 
 <p align="center">
-  <img src="screenshots/today.png" width="180" alt="Today" />
-  &nbsp;
-  <img src="screenshots/food-log.png" width="180" alt="Food Log" />
-  &nbsp;
-  <img src="screenshots/log-meal.png" width="180" alt="Log a Meal" />
-  &nbsp;
-  <img src="screenshots/goals.png" width="180" alt="Goals" />
+  <img src="screenshots/app-icon.jpg" width="180" alt="TeenHealth App Icon" />
 </p>
-
-<p align="center">
-  <img src="screenshots/coach.png" width="180" alt="Coach" />
-  &nbsp;
-  <img src="screenshots/progress.png" width="180" alt="Progress" />
-  &nbsp;
-  <img src="screenshots/support.jpg" width="180" alt="Support" />
-</p>
-
-| Screen | Description |
-|---|---|
-| **Today** | Personalized dashboard with goal progress rings, step/calorie/sleep stats from HealthKit, and a Coach Alex tip |
-| **Food Log** | Logged meals organized by day with streak tracking |
-| **Log a Meal** | Quick-pick foods, photo logging, and meal-type selector |
-| **Goals** | Active goals with progress bars, weekly stats, and completion checkmarks |
-| **Coach** | Real AI conversation with Coach Alex (Groq / Llama 3.3 70B) |
-| **Progress** | Level system (Seedling → Sprout → ...), weekly step and meal charts |
-| **Support** | Crisis resources, coach link, and trusted adult guidance |
 
 ---
 

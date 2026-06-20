@@ -26,6 +26,7 @@
 		D4D85F22006B5E2F79587944 /* CoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECD581B37267DBC14DFCED /* CoachView.swift */; };
 		DB93B1F43E17BCEA9FAC53A8 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC9ADD38D04F74E66ECBAA6 /* UserNotifications.framework */; };
 		E09CC8986E9A50C6298AB4A6 /* CoachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D0268D1BD4571B9DA90D /* CoachService.swift */; };
+		8F2F6C346478043C46C7A6D1 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB5316C324415D7B6542AE9 /* Secrets.swift */; };
 		E30AEF727FB7DAD74A50B433 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC69FC03B4C0C34ED439EC /* ProgressViewModel.swift */; };
 		E74D617C4F45809F0031DE22 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8C95D2DCC4CA6EA0B4028 /* DesignSystem.swift */; };
 		F56C3D3C2135157B815EE12E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6963D89F20CA6AEB64FA0252 /* SettingsView.swift */; };
@@ -50,7 +51,7 @@
 		521160B9B8969FEE312B9203 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		68AA554ACA76A89818E3BA65 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		6963D89F20CA6AEB64FA0252 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		6B161EDC8CE7C1A6558A9983 /* TeenHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TeenHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B161EDC8CE7C1A6558A9983 /* TeenHealth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeenHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FC8C95D2DCC4CA6EA0B4028 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		88808998A00F508AF186F550 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A9CAC6ADE0FEBC487402F740 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		DE9ED6687FE4185A059362BA /* LogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
 		F34287D13303121771457863 /* GoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewModel.swift; sourceTree = "<group>"; };
 		F567D0268D1BD4571B9DA90D /* CoachService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachService.swift; sourceTree = "<group>"; };
+		5EB5316C324415D7B6542AE9 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			children = (
 				453941E0F8E9D580DB456612 /* Assets.xcassets */,
 				09110B713854DC0A11350367 /* ContentView.swift */,
+				5EB5316C324415D7B6542AE9 /* Secrets.swift */,
 				C8A85D95A80F9559D2C7F258 /* TeenHealth.entitlements */,
 				3DF5B7604FDBFB28803C3568 /* TeenHealthApp.swift */,
 				DA48864BF0A9604AA065CDBF /* Models */,
@@ -265,11 +268,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-					CF139A1396BE33059ACE2EA7 = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = F83FA7E3935AC22F69163714 /* Build configuration list for PBXProject "TeenHealth" */;
 			developmentRegion = en;
@@ -323,6 +321,7 @@
 				187AFC21E788BA2F62B4B152 /* ProgressView.swift in Sources */,
 				E30AEF727FB7DAD74A50B433 /* ProgressViewModel.swift in Sources */,
 				34010D94AC62155952A4B2B4 /* RewardEngine.swift in Sources */,
+				8F2F6C346478043C46C7A6D1 /* Secrets.swift in Sources */,
 				F56C3D3C2135157B815EE12E /* SettingsView.swift in Sources */,
 				CF0DFF423635894111CA959D /* TeenHealthApp.swift in Sources */,
 				697B25C6D6FE6506F0A6EC0C /* TodayView.swift in Sources */,
@@ -339,6 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeenHealth/TeenHealth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RXQUDG4RC6;
 				INFOPLIST_FILE = TeenHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,6 +489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeenHealth/TeenHealth.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = RXQUDG4RC6;
 				INFOPLIST_FILE = TeenHealth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
