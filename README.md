@@ -8,17 +8,33 @@ TeenHealth is designed as a **supplement to clinical care**, not a replacement. 
 
 ## Screenshots
 
-<p float="left">
-  <img src="screenshots/today.png" width="250" alt="Today Dashboard" />
-  &nbsp;&nbsp;&nbsp;
-  <img src="screenshots/progress.png" width="250" alt="Progress & Levels" />
+<p align="center">
+  <img src="screenshots/today.png" width="180" alt="Today" />
+  &nbsp;
+  <img src="screenshots/food-log.png" width="180" alt="Food Log" />
+  &nbsp;
+  <img src="screenshots/log-meal.png" width="180" alt="Log a Meal" />
+  &nbsp;
+  <img src="screenshots/goals.png" width="180" alt="Goals" />
 </p>
 
-**Left:** The Today dashboard shows active goals with progress rings, a daily summary (steps, active energy, sleep), a motivational message from Coach Alex, and a quick meal log button.
+<p align="center">
+  <img src="screenshots/coach.png" width="180" alt="Coach" />
+  &nbsp;
+  <img src="screenshots/progress.png" width="180" alt="Progress" />
+  &nbsp;
+  <img src="screenshots/support.jpg" width="180" alt="Support" />
+</p>
 
-**Right:** The Progress tab tracks weekly steps and meals with bar charts, shows the user's current level and points (Seedling → Sprout → ...), and displays earned badges. HealthKit data is pulled automatically.
-
-> More screenshots coming — some features are still being refined.
+| Screen | Description |
+|---|---|
+| **Today** | Personalized dashboard with goal progress rings, step/calorie/sleep stats from HealthKit, and a Coach Alex tip |
+| **Food Log** | Logged meals organized by day with streak tracking |
+| **Log a Meal** | Quick-pick foods, photo logging, and meal-type selector |
+| **Goals** | Active goals with progress bars, weekly stats, and completion checkmarks |
+| **Coach** | Real AI conversation with Coach Alex (Groq / Llama 3.3 70B) |
+| **Progress** | Level system (Seedling → Sprout → ...), weekly step and meal charts |
+| **Support** | Crisis resources, coach link, and trusted adult guidance |
 
 ---
 
@@ -41,40 +57,53 @@ Most health apps for teenagers either treat them like adults (calorie deficits, 
 - Swipe-lock: required fields must be filled before advancing
 
 ### Today Dashboard
-- Personalized greeting with the user's avatar
+- Personalized greeting with the user's avatar and name
 - Progress rings for each active goal — turn green with a checkmark when completed
-- Quick stats: steps, active energy, sleep (pulled from HealthKit)
+- Quick stats pulled from HealthKit: steps, active energy (kcal), sleep hours
 - Daily meal log timeline
-- One-tap "Log a Meal" button
+- One-tap "Log a Meal" floating button
 
 ### Food Log
-- Photo logging, quick-pick favorites, and manual search
-- Weekly calendar strip to browse past days
-- Organized by meal type (breakfast, lunch, dinner, snack)
+- Weekly streak tracker with day-by-day dot indicators
+- Meal entries organized by type (breakfast, lunch, dinner, snack)
+- Quick re-log and favourite buttons per entry
+- Add meals via photo, quick-pick grid, or manual search
+
+### Log a Meal
+- Meal type selector (Breakfast / Lunch / Dinner / Snack)
+- "Take a Photo" — fastest logging method
+- Quick-pick grid (Apple, Banana, Chicken, Rice, Salad, Sandwich, Yogurt, Oatmeal, Pasta, Soup, and more)
+- Optional note: "How did this meal make you feel?"
 
 ### Goals
 - 3 research-backed starter goals auto-created on signup (2 meals/day, 5,000 steps, 6 glasses of water)
-- Fully customizable — teens set their own targets
-- Visual progress bars with completion states
+- Live progress bars with percentage complete
+- Completed goals show a green checkmark
+- Update, pause, or delete any goal
+- Add custom goals with the + button
 
 ### AI Coach
 - Real conversations with **Coach Alex**, powered by **Groq (Llama 3.3 70B)**
-- Context-aware replies — the coach remembers the last 10 messages
-- Encouraging, non-restrictive tone. Never mentions calories, weight, or dieting.
-- Typing indicator and message timestamps
+- Context-aware replies using the last 10 messages
+- Encouraging, non-restrictive tone — never mentions calories, weight, or dieting
+- Typing indicator, timestamps, and read receipts
+- Secure end-to-end indicator
 
 ### Progress
-- Weekly bar charts for steps and meals logged (HealthKit-integrated)
-- Level progression system: Seedling → Sprout → ... with point milestones
-- Badge collection earned through streaks, logging, and first messages
+- Level progression: Seedling → Sprout → ... with point milestones
+- Weekly bar charts for steps and meals logged
+- HealthKit-integrated step data (goal met vs. below goal)
+- Badge collection and streak display
+
+### Support
+- Crisis Text Line direct link (Text HOME to 741741)
+- "Talk to Your Coach" shortcut
+- "Tell a Trusted Adult" guidance
+- Built into the app so help is always one tap away
 
 ### Profile
 - Avatar and display name
-- Links to Progress, Learn, and Settings in one place
-
-### Learn
-- Education cards on nutrition, movement, sleep, and mental wellness
-- Evidence-based content written for a teen audience
+- Quick links to Progress, Learn, and Settings
 
 ### Settings
 - Profile and avatar editing
@@ -147,7 +176,7 @@ Most health apps for teenagers either treat them like adults (calorie deficits, 
 ## Privacy & Data
 
 - All personal data is stored **on-device only** — nothing is sent to a third-party server
-- Coach messages go to Groq's API for AI processing only — no data is stored or sold
+- Coach messages are processed by Groq's API only — no data is stored or sold
 - Parental consent is required before any data is collected (COPPA-aware flow)
 - Users can delete all their data at any time from Settings
 
