@@ -10,15 +10,12 @@ final class CoachViewModel: ObservableObject {
     @Published var threadId: UUID = UUID()
     @Published var coachIsTyping: Bool = false
     @Published var unreadCount: Int = 0
+    @Published var errorMessage: String? = nil
 
-    private let coachService: MockCoachContentProvider
+    private let groq = GroqCoachService()
     private let rewardEngine: RewardEngine
 
-    init(
-        coachService: MockCoachContentProvider = MockCoachContentProvider(),
-        rewardEngine: RewardEngine = RewardEngine()
-    ) {
-        self.coachService = coachService
+    init(rewardEngine: RewardEngine = RewardEngine()) {
         self.rewardEngine = rewardEngine
     }
 
@@ -26,21 +23,18 @@ final class CoachViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
 
+        // First launch: send a personalised greeting via AI
         if user.messages.isEmpty {
-            let mockBodies = await coachService.fetchMessageBodies(threadId: threadId)
-
-            for body in mockBodies {
-                let msg = Message(
-                    threadId: threadId,
-                    senderId: UUID(),
-                    senderName: "Coach",
-                    body: body,
-                    isFromCoach: true
-                )
-
-                context.insert(msg)
-                user.messages.append(msg)
-            }
+            let greeting = "Hey \(user.displayName.capitalized)! I'm Coach Alex 👋 I'm here to help you build healthy habits at your own pace. What's one thing you want to work on this week?"
+            let msg = Message(
+                threadId: threadId,
+                senderId: UUID(),
+                senderName: "Coach Alex",
+                body: greeting,
+                isFromCoach: true
+            )
+            context.insert(msg)
+            user.messages.append(msg)
         }
 
         refreshMessages(from: user)
@@ -51,7 +45,9 @@ final class CoachViewModel: ObservableObject {
         guard !body.isEmpty else { return }
 
         messageText = ""
+        errorMessage = nil
 
+        // Save user message
         let userMessage = Message(
             threadId: threadId,
             senderId: user.id,
@@ -59,7 +55,6 @@ final class CoachViewModel: ObservableObject {
             body: body,
             isFromCoach: false
         )
-
         context.insert(userMessage)
         user.messages.append(userMessage)
         refreshMessages(from: user)
@@ -68,23 +63,37 @@ final class CoachViewModel: ObservableObject {
             _ = rewardEngine.checkAndAwardBadges(for: user, context: context)
         }
 
+        // Show typing indicator while waiting for Groq
         coachIsTyping = true
-        try? await Task.sleep(nanoseconds: 2_500_000_000)
-        coachIsTyping = false
 
-        let replyBody = coachService.getCoachReplyBody(threadId: threadId)
+        do {
+            let replyText = try await groq.reply(to: body, history: messages)
+            coachIsTyping = false
 
-        let coachReply = Message(
-            threadId: threadId,
-            senderId: UUID(),
-            senderName: "Coach",
-            body: replyBody,
-            isFromCoach: true
-        )
-
-        context.insert(coachReply)
-        user.messages.append(coachReply)
-        refreshMessages(from: user)
+            let coachReply = Message(
+                threadId: threadId,
+                senderId: UUID(),
+                senderName: "Coach Alex",
+                body: replyText,
+                isFromCoach: true
+            )
+            context.insert(coachReply)
+            user.messages.append(coachReply)
+            refreshMessages(from: user)
+        } catch {
+            coachIsTyping = false
+            // Fallback message if API fails
+            let fallback = Message(
+                threadId: threadId,
+                senderId: UUID(),
+                senderName: "Coach Alex",
+                body: "Sorry, I'm having trouble connecting right now. Try again in a moment! 😊",
+                isFromCoach: true
+            )
+            context.insert(fallback)
+            user.messages.append(fallback)
+            refreshMessages(from: user)
+        }
     }
 
     func markAllRead(user: AppUser) {
@@ -103,18 +112,3 @@ final class CoachViewModel: ObservableObject {
     }
 }
 
-struct MockCoachContentProvider {
-    func fetchMessageBodies(threadId: UUID) async -> [String] {
-        try? await Task.sleep(nanoseconds: 500_000_000)
-
-        return [
-            "Welcome! I’m your teen health coach.",
-            "Pick one small goal for today.",
-            "Logging a meal, taking a walk, or swapping one drink all count."
-        ]
-    }
-
-    func getCoachReplyBody(threadId: UUID) -> String {
-        return "Nice check-in. Keep today focused on one small win."
-    }
-}
