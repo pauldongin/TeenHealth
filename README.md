@@ -1,27 +1,35 @@
 # TeenHealth
 
-A research-backed iOS app designed to help teenagers (ages 13–17) build healthier habits — as a supplement to clinical care, not a replacement.
+> A research-backed iOS app helping teenagers (ages 13–17) build healthier habits — one small win at a time.
 
----
-
-## Overview
-
-TeenHealth was built around four principles from adolescent obesity prevention research:
-
-- **Self-monitoring works** — teens who log meals and activity consistently see better outcomes
-- **Autonomy matters** — goals should be chosen by the teen, not imposed
-- **Small wins drive streaks** — gamification (points, badges, streaks) maintains engagement
-- **Coach relationships help** — a supportive coach voice improves adherence
-
-The app targets the lifestyle factors most supported by evidence: meal logging, daily movement, hydration, and sleep — without ever showing calorie deficits or weight-loss framing.
+TeenHealth is designed as a **supplement to clinical care**, not a replacement. It focuses on the lifestyle factors most supported by adolescent health research: meal logging, daily movement, hydration, and sleep — without calorie counting, dieting, or weight-loss framing.
 
 ---
 
 ## Screenshots
 
-<img src="screenshots/today.png" width="300" alt="Today Dashboard" />
+<p float="left">
+  <img src="screenshots/today.png" width="250" alt="Today Dashboard" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="screenshots/progress.png" width="250" alt="Progress & Levels" />
+</p>
 
-> More screenshots coming soon — some features are currently being refined and fixed.
+**Left:** The Today dashboard shows active goals with progress rings, a daily summary (steps, active energy, sleep), a motivational message from Coach Alex, and a quick meal log button.
+
+**Right:** The Progress tab tracks weekly steps and meals with bar charts, shows the user's current level and points (Seedling → Sprout → ...), and displays earned badges. HealthKit data is pulled automatically.
+
+> More screenshots coming — some features are still being refined.
+
+---
+
+## Why This App?
+
+Most health apps for teenagers either treat them like adults (calorie deficits, BMI tracking) or feel too childish to take seriously. TeenHealth is built around four evidence-based principles:
+
+- **Self-monitoring works** — consistent meal and activity logging is one of the strongest predictors of healthy habit formation in adolescents
+- **Autonomy matters** — goals are chosen by the teen, not imposed by the app or a parent
+- **Small wins drive engagement** — a gamification system (points, levels, badges, streaks) keeps teens coming back without pressure
+- **Coach relationships help** — a supportive, non-judgmental AI coach provides real-time encouragement and guidance
 
 ---
 
@@ -29,44 +37,50 @@ The app targets the lifestyle factors most supported by evidence: meal logging, 
 
 ### Onboarding
 - COPPA-compliant parental consent + teen assent flow before any data is collected
-- Custom avatar creation (skin tone, hair color, glasses, outfit style & color)
-- Swipe-lock: can't advance past required fields
+- Custom emoji avatar with personalized background color
+- Swipe-lock: required fields must be filled before advancing
 
 ### Today Dashboard
-- Daily summary: steps, meals logged, water, sleep
-- Progress rings for each active goal
-- Points and streak display
-- Quick-log shortcuts
+- Personalized greeting with the user's avatar
+- Progress rings for each active goal — turn green with a checkmark when completed
+- Quick stats: steps, active energy, sleep (pulled from HealthKit)
+- Daily meal log timeline
+- One-tap "Log a Meal" button
 
 ### Food Log
 - Photo logging, quick-pick favorites, and manual search
 - Weekly calendar strip to browse past days
-- Meal-by-meal breakdown (breakfast, lunch, dinner, snack)
+- Organized by meal type (breakfast, lunch, dinner, snack)
 
 ### Goals
-- Research-backed starter goals (2 meals/day, 5,000 steps, 6 glasses of water)
+- 3 research-backed starter goals auto-created on signup (2 meals/day, 5,000 steps, 6 glasses of water)
 - Fully customizable — teens set their own targets
-- Progress bars with completion states
+- Visual progress bars with completion states
 
-### Coach
-- Chat interface with "Coach Alex"
-- Encouragement-focused, non-restrictive messaging
-- Typing indicator, message timestamps, read receipts
+### AI Coach
+- Real conversations with **Coach Alex**, powered by **Groq (Llama 3.3 70B)**
+- Context-aware replies — the coach remembers the last 10 messages
+- Encouraging, non-restrictive tone. Never mentions calories, weight, or dieting.
+- Typing indicator and message timestamps
 
 ### Progress
-- Weekly and monthly charts for steps, meals, water, sleep, and weight
-- Badge collection (earned for streaks, logging milestones, etc.)
-- Points history and level progression
+- Weekly bar charts for steps and meals logged (HealthKit-integrated)
+- Level progression system: Seedling → Sprout → ... with point milestones
+- Badge collection earned through streaks, logging, and first messages
+
+### Profile
+- Avatar and display name
+- Links to Progress, Learn, and Settings in one place
 
 ### Learn
 - Education cards on nutrition, movement, sleep, and mental wellness
 - Evidence-based content written for a teen audience
 
 ### Settings
-- Profile editing and avatar customization
-- Notification preferences (meal reminders, step reminders, weigh-in reminders)
-- HealthKit permissions
-- Data deletion
+- Profile and avatar editing
+- Notification preferences (meal, step, and weigh-in reminders)
+- HealthKit permissions management
+- Full data deletion
 
 ---
 
@@ -79,6 +93,7 @@ The app targets the lifestyle factors most supported by evidence: meal logging, 
 | Architecture | MVVM |
 | Persistence | SwiftData (on-device only, no iCloud) |
 | Health data | HealthKit (steps, active energy, sleep, weight) |
+| AI Coach | Groq API — Llama 3.3 70B |
 | Notifications | UserNotifications |
 | Project generation | XcodeGen |
 
@@ -110,33 +125,43 @@ The app targets the lifestyle factors most supported by evidence: meal logging, 
    xcodegen generate
    ```
 
-4. **Open in Xcode**
+4. **Add your Groq API key**
+
+   Create `TeenHealth/Secrets.swift` (this file is gitignored):
+   ```swift
+   enum Secrets {
+       static let groqAPIKey = "YOUR_GROQ_API_KEY"
+   }
+   ```
+   Get a free key at [console.groq.com](https://console.groq.com)
+
+5. **Open in Xcode**
    ```bash
    open TeenHealth.xcodeproj
    ```
 
-5. **Set your Development Team** in Xcode → Target → Signing & Capabilities, then run on a device or simulator with **Cmd+R**
+6. **Set your Development Team** in Xcode → Target → Signing & Capabilities, then run with **Cmd+R**
 
 ---
 
 ## Privacy & Data
 
-- All data is stored **on-device only** — nothing is sent to a server
-- No ads, no data selling
-- Parental consent is required before the app collects any information
-- Users can delete all data at any time from Settings
-
----
-
-## Disclaimer
-
-TeenHealth is a wellness tracking tool intended to **supplement** — not replace — care from a qualified healthcare provider. Always work with your medical team when making decisions about your health.
+- All personal data is stored **on-device only** — nothing is sent to a third-party server
+- Coach messages go to Groq's API for AI processing only — no data is stored or sold
+- Parental consent is required before any data is collected (COPPA-aware flow)
+- Users can delete all their data at any time from Settings
 
 ---
 
 ## Availability
 
-Currently available in **developer mode only** — the app must be built and installed via Xcode directly onto your device. It is not yet available on the App Store.
+Currently available in **developer mode only** — the app must be built and installed via Xcode directly onto your device. Not yet on the App Store.
+
+---
+
+## Disclaimer
+
+TeenHealth is a wellness tracking tool intended to **supplement** — not replace — care from a qualified healthcare provider. Always consult your medical team when making decisions about your health.
 
 ---
 
@@ -144,4 +169,4 @@ Currently available in **developer mode only** — the app must be built and ins
 
 © 2026 Paul Son. All Rights Reserved.
 
-This project is publicly visible for portfolio purposes. You may not copy, distribute, modify, or use any part of this code for your own projects without explicit written permission from the author.
+This project is publicly visible for portfolio purposes. You may not copy, distribute, modify, or use any part of this code without explicit written permission from the author.
