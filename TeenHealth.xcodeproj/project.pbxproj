@@ -1,0 +1,529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0441A601BB18845F877A0211 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AA554ACA76A89818E3BA65 /* LearnView.swift */; };
+		187AFC21E788BA2F62B4B152 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88808998A00F508AF186F550 /* ProgressView.swift */; };
+		34010D94AC62155952A4B2B4 /* RewardEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31200F8CDAEA73579E43790A /* RewardEngine.swift */; };
+		346431CCE6DAEC4AB0F55851 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF28F448006D58D8E30D80A /* NotificationService.swift */; };
+		347698613F1E07D5332EDB5D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B69D5BDA5688E94A375D56E /* HealthKit.framework */; };
+		5E7AE3E77320771DD67DD5FB /* GoalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34287D13303121771457863 /* GoalsViewModel.swift */; };
+		6818FF0990B26FFF1B150530 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E73D8FABAC11D21187CBAE8 /* HealthService.swift */; };
+		697B25C6D6FE6506F0A6EC0C /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521160B9B8969FEE312B9203 /* TodayView.swift */; };
+		6DB6B63F8E56AD4E0E8AF23E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 453941E0F8E9D580DB456612 /* Assets.xcassets */; };
+		8CA8F420E06ABEF6F31BFA36 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD510B8D6A8264D5B62416 /* OnboardingView.swift */; };
+		9C038790750A8F2F8B645FB5 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010795FD9FCF230E7FB8204 /* AppModels.swift */; };
+		A87A6344FC2D281B5D17BAB6 /* LogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9ED6687FE4185A059362BA /* LogViewModel.swift */; };
+		AC0E9958BDF18F9C8C35DBC2 /* CoachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE0AFBAF36D04761F648C82 /* CoachViewModel.swift */; };
+		B510EEA5070FD03CD7C1BAE2 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141E2B4CFF84B43A55E40491 /* TodayViewModel.swift */; };
+		CB0019F4837F934626D75CCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09110B713854DC0A11350367 /* ContentView.swift */; };
+		CF0DFF423635894111CA959D /* TeenHealthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF5B7604FDBFB28803C3568 /* TeenHealthApp.swift */; };
+		D4D85F22006B5E2F79587944 /* CoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADECD581B37267DBC14DFCED /* CoachView.swift */; };
+		DB93B1F43E17BCEA9FAC53A8 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FC9ADD38D04F74E66ECBAA6 /* UserNotifications.framework */; };
+		E09CC8986E9A50C6298AB4A6 /* CoachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F567D0268D1BD4571B9DA90D /* CoachService.swift */; };
+		E30AEF727FB7DAD74A50B433 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CC69FC03B4C0C34ED439EC /* ProgressViewModel.swift */; };
+		E74D617C4F45809F0031DE22 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC8C95D2DCC4CA6EA0B4028 /* DesignSystem.swift */; };
+		F56C3D3C2135157B815EE12E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6963D89F20CA6AEB64FA0252 /* SettingsView.swift */; };
+		F949A582BEFACFC258540CBD /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CAC6ADE0FEBC487402F740 /* LogView.swift */; };
+		F9A3AA5EA7EF76B496E63B67 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2EF6F44D9DB26FDF06BDC /* GoalsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		09110B713854DC0A11350367 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0E73D8FABAC11D21187CBAE8 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
+		141E2B4CFF84B43A55E40491 /* TodayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
+		18F2EF6F44D9DB26FDF06BDC /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		2CAD510B8D6A8264D5B62416 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		31200F8CDAEA73579E43790A /* RewardEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardEngine.swift; sourceTree = "<group>"; };
+		3B69D5BDA5688E94A375D56E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		3DF5B7604FDBFB28803C3568 /* TeenHealthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenHealthApp.swift; sourceTree = "<group>"; };
+		3FC9ADD38D04F74E66ECBAA6 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		453941E0F8E9D580DB456612 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4AE0AFBAF36D04761F648C82 /* CoachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachViewModel.swift; sourceTree = "<group>"; };
+		4FF28F448006D58D8E30D80A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5010795FD9FCF230E7FB8204 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
+		521160B9B8969FEE312B9203 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		68AA554ACA76A89818E3BA65 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
+		6963D89F20CA6AEB64FA0252 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6B161EDC8CE7C1A6558A9983 /* TeenHealth.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = TeenHealth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FC8C95D2DCC4CA6EA0B4028 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		88808998A00F508AF186F550 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		A9CAC6ADE0FEBC487402F740 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		ADECD581B37267DBC14DFCED /* CoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachView.swift; sourceTree = "<group>"; };
+		C8A85D95A80F9559D2C7F258 /* TeenHealth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeenHealth.entitlements; sourceTree = "<group>"; };
+		D8CC69FC03B4C0C34ED439EC /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
+		DE9ED6687FE4185A059362BA /* LogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewModel.swift; sourceTree = "<group>"; };
+		F34287D13303121771457863 /* GoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsViewModel.swift; sourceTree = "<group>"; };
+		F567D0268D1BD4571B9DA90D /* CoachService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		76474A5A8C4558CEC7368D15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				347698613F1E07D5332EDB5D /* HealthKit.framework in Frameworks */,
+				DB93B1F43E17BCEA9FAC53A8 /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		244B6E1C2307F5C07018994A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6963D89F20CA6AEB64FA0252 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		3024E0167E16DFB929AC21ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B161EDC8CE7C1A6558A9983 /* TeenHealth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55103B237DECCF60A47590EB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F567D0268D1BD4571B9DA90D /* CoachService.swift */,
+				0E73D8FABAC11D21187CBAE8 /* HealthService.swift */,
+				4FF28F448006D58D8E30D80A /* NotificationService.swift */,
+				31200F8CDAEA73579E43790A /* RewardEngine.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		657D90234EDFCFDB9A463816 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				88808998A00F508AF186F550 /* ProgressView.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		67A597CAC2BFDFC6A15867DC /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				A9CAC6ADE0FEBC487402F740 /* LogView.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		777C8CF60905026AC223F6DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7FB665E8308AB5560AE13C6 /* Coach */,
+				9CC0175E9F22EC10C50B4BF9 /* Goals */,
+				CA298841A29E31A661DB0D42 /* Learn */,
+				67A597CAC2BFDFC6A15867DC /* Log */,
+				79B0F8AA71E05F96B3B89C52 /* Onboarding */,
+				657D90234EDFCFDB9A463816 /* Progress */,
+				244B6E1C2307F5C07018994A /* Settings */,
+				C6A9EBB1770A91A46669FD23 /* Shared */,
+				D92241EDBF01C7698220D5EB /* Today */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		79B0F8AA71E05F96B3B89C52 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2CAD510B8D6A8264D5B62416 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		959EE0C9EF2D1292A3F467EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B69D5BDA5688E94A375D56E /* HealthKit.framework */,
+				3FC9ADD38D04F74E66ECBAA6 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CC0175E9F22EC10C50B4BF9 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				18F2EF6F44D9DB26FDF06BDC /* GoalsView.swift */,
+			);
+			path = Goals;
+			sourceTree = "<group>";
+		};
+		9DE5BA3492B217E91F38E679 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4AE0AFBAF36D04761F648C82 /* CoachViewModel.swift */,
+				F34287D13303121771457863 /* GoalsViewModel.swift */,
+				DE9ED6687FE4185A059362BA /* LogViewModel.swift */,
+				D8CC69FC03B4C0C34ED439EC /* ProgressViewModel.swift */,
+				141E2B4CFF84B43A55E40491 /* TodayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A52328F6EF8F3BCC09A63754 = {
+			isa = PBXGroup;
+			children = (
+				E8A3CA55D573FB2D6BF9AE05 /* TeenHealth */,
+				959EE0C9EF2D1292A3F467EA /* Frameworks */,
+				3024E0167E16DFB929AC21ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7FB665E8308AB5560AE13C6 /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				ADECD581B37267DBC14DFCED /* CoachView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		C6A9EBB1770A91A46669FD23 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6FC8C95D2DCC4CA6EA0B4028 /* DesignSystem.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CA298841A29E31A661DB0D42 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				68AA554ACA76A89818E3BA65 /* LearnView.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		D92241EDBF01C7698220D5EB /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				521160B9B8969FEE312B9203 /* TodayView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		DA48864BF0A9604AA065CDBF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5010795FD9FCF230E7FB8204 /* AppModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E8A3CA55D573FB2D6BF9AE05 /* TeenHealth */ = {
+			isa = PBXGroup;
+			children = (
+				453941E0F8E9D580DB456612 /* Assets.xcassets */,
+				09110B713854DC0A11350367 /* ContentView.swift */,
+				C8A85D95A80F9559D2C7F258 /* TeenHealth.entitlements */,
+				3DF5B7604FDBFB28803C3568 /* TeenHealthApp.swift */,
+				DA48864BF0A9604AA065CDBF /* Models */,
+				55103B237DECCF60A47590EB /* Services */,
+				9DE5BA3492B217E91F38E679 /* ViewModels */,
+				777C8CF60905026AC223F6DD /* Views */,
+			);
+			path = TeenHealth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF139A1396BE33059ACE2EA7 /* TeenHealth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77B4486698192D70667A5489 /* Build configuration list for PBXNativeTarget "TeenHealth" */;
+			buildPhases = (
+				78F16C403F4A9A6C254DF1DC /* Sources */,
+				2B4367B00D64D9220DC63F69 /* Resources */,
+				76474A5A8C4558CEC7368D15 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TeenHealth;
+			packageProductDependencies = (
+			);
+			productName = TeenHealth;
+			productReference = 6B161EDC8CE7C1A6558A9983 /* TeenHealth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D2FFC9BF979C0E504B716489 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					CF139A1396BE33059ACE2EA7 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = F83FA7E3935AC22F69163714 /* Build configuration list for PBXProject "TeenHealth" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A52328F6EF8F3BCC09A63754;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3024E0167E16DFB929AC21ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF139A1396BE33059ACE2EA7 /* TeenHealth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B4367B00D64D9220DC63F69 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB6B63F8E56AD4E0E8AF23E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78F16C403F4A9A6C254DF1DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C038790750A8F2F8B645FB5 /* AppModels.swift in Sources */,
+				E09CC8986E9A50C6298AB4A6 /* CoachService.swift in Sources */,
+				D4D85F22006B5E2F79587944 /* CoachView.swift in Sources */,
+				AC0E9958BDF18F9C8C35DBC2 /* CoachViewModel.swift in Sources */,
+				CB0019F4837F934626D75CCB /* ContentView.swift in Sources */,
+				E74D617C4F45809F0031DE22 /* DesignSystem.swift in Sources */,
+				F9A3AA5EA7EF76B496E63B67 /* GoalsView.swift in Sources */,
+				5E7AE3E77320771DD67DD5FB /* GoalsViewModel.swift in Sources */,
+				6818FF0990B26FFF1B150530 /* HealthService.swift in Sources */,
+				0441A601BB18845F877A0211 /* LearnView.swift in Sources */,
+				F949A582BEFACFC258540CBD /* LogView.swift in Sources */,
+				A87A6344FC2D281B5D17BAB6 /* LogViewModel.swift in Sources */,
+				346431CCE6DAEC4AB0F55851 /* NotificationService.swift in Sources */,
+				8CA8F420E06ABEF6F31BFA36 /* OnboardingView.swift in Sources */,
+				187AFC21E788BA2F62B4B152 /* ProgressView.swift in Sources */,
+				E30AEF727FB7DAD74A50B433 /* ProgressViewModel.swift in Sources */,
+				34010D94AC62155952A4B2B4 /* RewardEngine.swift in Sources */,
+				F56C3D3C2135157B815EE12E /* SettingsView.swift in Sources */,
+				CF0DFF423635894111CA959D /* TeenHealthApp.swift in Sources */,
+				697B25C6D6FE6506F0A6EC0C /* TodayView.swift in Sources */,
+				B510EEA5070FD03CD7C1BAE2 /* TodayViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5E3CDD5CA47214E2B92687AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeenHealth/TeenHealth.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TeenHealth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauldon.TeenHealth;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		88A75B9BAAE8B904952F3CA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TeenHealth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauldon.TeenHealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		8A26C58190291860198CCC0B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = TeenHealth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauldon.TeenHealth;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		B1227820522AFBD172FA20AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeenHealth/TeenHealth.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = TeenHealth/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pauldon.TeenHealth;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		77B4486698192D70667A5489 /* Build configuration list for PBXNativeTarget "TeenHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E3CDD5CA47214E2B92687AD /* Debug */,
+				B1227820522AFBD172FA20AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F83FA7E3935AC22F69163714 /* Build configuration list for PBXProject "TeenHealth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88A75B9BAAE8B904952F3CA4 /* Debug */,
+				8A26C58190291860198CCC0B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D2FFC9BF979C0E504B716489 /* Project object */;
+}
