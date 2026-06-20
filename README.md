@@ -2,6 +2,8 @@
 
 > A research-backed iOS app helping teenagers (ages 13–17) build healthier habits — one small win at a time.
 
+**Developer:** [pauldongin.github.io](https://pauldongin.github.io)
+
 TeenHealth is designed as a **supplement to clinical care**, not a replacement. It focuses on the lifestyle factors most supported by adolescent health research: meal logging, daily movement, hydration, and sleep — without calorie counting, dieting, or weight-loss framing.
 
 ---
