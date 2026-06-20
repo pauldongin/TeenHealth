@@ -241,182 +241,32 @@ struct ToastView: View {
     }
 }
 
-// MARK: - Avatar View (drawn human face)
+// MARK: - Avatar View (emoji-based, high quality)
 
 struct AvatarView: View {
     let config: AvatarConfig
     let size: CGFloat
 
-    private var s: CGFloat { size }          // shorthand
-
     var body: some View {
         ZStack {
-            // ── Background circle ──────────────────────────────────────
             Circle()
-                .fill(Color(hex: config.outfitColor).opacity(0.18))
-                .frame(width: s, height: s)
-
-            // ── Shirt / clothing collar ────────────────────────────────
-            ShirtShape(outfitStyle: config.outfit)
-                .fill(Color(hex: config.outfitColor))
-                .frame(width: s * 0.72, height: s * 0.36)
-                .offset(y: s * 0.34)
-
-            // ── Neck ───────────────────────────────────────────────────
-            RoundedRectangle(cornerRadius: s * 0.04)
-                .fill(Color(hex: config.skinTone))
-                .frame(width: s * 0.14, height: s * 0.14)
-                .offset(y: s * 0.19)
-
-            // ── Head ───────────────────────────────────────────────────
-            Ellipse()
-                .fill(Color(hex: config.skinTone))
-                .frame(width: s * 0.50, height: s * 0.54)
-                .offset(y: -s * 0.06)
-
-            // ── Hair ───────────────────────────────────────────────────
-            HairShape()
-                .fill(Color(hex: config.hairColor))
-                .frame(width: s * 0.52, height: s * 0.28)
-                .offset(y: -s * 0.27)
-
-            // ── Eyes ───────────────────────────────────────────────────
-            HStack(spacing: s * 0.10) {
-                EyeShape(size: s * 0.075)
-                EyeShape(size: s * 0.075)
-            }
-            .offset(y: -s * 0.06)
-
-            // ── Nose (small dot) ───────────────────────────────────────
-            Circle()
-                .fill(Color(hex: config.skinTone).opacity(0.5))
-                .overlay(Circle().stroke(Color(hex: config.skinTone).darker(by: 0.12), lineWidth: 1))
-                .frame(width: s * 0.04, height: s * 0.04)
-                .offset(y: s * 0.03)
-
-            // ── Smile ──────────────────────────────────────────────────
-            SmileShape()
-                .stroke(Color(hex: config.skinTone).darker(by: 0.25), style: StrokeStyle(lineWidth: s * 0.028, lineCap: .round))
-                .frame(width: s * 0.20, height: s * 0.08)
-                .offset(y: s * 0.10)
-
-            // ── Glasses (optional) ─────────────────────────────────────
-            if config.hasGlasses {
-                GlassesShape(size: s)
-                    .offset(y: -s * 0.06)
-            }
+                .fill(
+                    LinearGradient(
+                        colors: [Color(hex: config.backgroundColor), Color(hex: config.backgroundColor).opacity(0.75)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(width: size, height: size)
+            Text(config.emoji)
+                .font(.system(size: size * 0.52))
         }
-        .frame(width: s, height: s)
+        .frame(width: size, height: size)
         .clipShape(Circle())
-        .overlay(Circle().stroke(Color(hex: config.outfitColor).opacity(0.5), lineWidth: s * 0.03))
-    }
-}
-
-// MARK: - Avatar Sub-shapes
-
-struct HairShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        let w = rect.width, h = rect.height
-        // Rounded top arc covering top of head
-        p.move(to: CGPoint(x: 0, y: h))
-        p.addCurve(
-            to: CGPoint(x: w, y: h),
-            control1: CGPoint(x: 0, y: -h * 0.4),
-            control2: CGPoint(x: w, y: -h * 0.4)
-        )
-        p.addLine(to: CGPoint(x: w, y: h * 0.6))
-        p.addCurve(
-            to: CGPoint(x: 0, y: h * 0.6),
-            control1: CGPoint(x: w * 0.75, y: h * 1.1),
-            control2: CGPoint(x: w * 0.25, y: h * 1.1)
-        )
-        p.closeSubpath()
-        return p
-    }
-}
-
-struct EyeShape: View {
-    let size: CGFloat
-    var body: some View {
-        ZStack {
-            // White of eye
-            Ellipse()
-                .fill(Color.white)
-                .frame(width: size, height: size * 0.72)
-            // Iris
+        .overlay(
             Circle()
-                .fill(Color(hex: "#3D2B1F"))
-                .frame(width: size * 0.52, height: size * 0.52)
-            // Highlight
-            Circle()
-                .fill(Color.white)
-                .frame(width: size * 0.16, height: size * 0.16)
-                .offset(x: size * 0.10, y: -size * 0.10)
-        }
-    }
-}
-
-struct SmileShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.move(to: CGPoint(x: 0, y: 0))
-        p.addQuadCurve(
-            to: CGPoint(x: rect.width, y: 0),
-            control: CGPoint(x: rect.width / 2, y: rect.height)
+                .stroke(Color(hex: config.backgroundColor).opacity(0.35), lineWidth: max(size * 0.03, 1.5))
         )
-        return p
-    }
-}
-
-struct GlassesShape: View {
-    let size: CGFloat
-    var body: some View {
-        HStack(spacing: size * 0.03) {
-            // Left lens
-            RoundedRectangle(cornerRadius: size * 0.05)
-                .stroke(Color(hex: "#2D3436"), lineWidth: size * 0.025)
-                .frame(width: size * 0.175, height: size * 0.13)
-            // Bridge
-            Rectangle()
-                .fill(Color(hex: "#2D3436"))
-                .frame(width: size * 0.04, height: size * 0.018)
-            // Right lens
-            RoundedRectangle(cornerRadius: size * 0.05)
-                .stroke(Color(hex: "#2D3436"), lineWidth: size * 0.025)
-                .frame(width: size * 0.175, height: size * 0.13)
-        }
-    }
-}
-
-struct ShirtShape: Shape {
-    let outfitStyle: String
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        let w = rect.width, h = rect.height
-        // V-neck or crew neck based on style
-        let neckDepth: CGFloat = outfitStyle == "sporty" ? h * 0.45 : h * 0.30
-        p.move(to: CGPoint(x: 0, y: h))
-        p.addLine(to: CGPoint(x: 0, y: h * 0.1))
-        p.addLine(to: CGPoint(x: w * 0.3, y: 0))
-        p.addLine(to: CGPoint(x: w * 0.42, y: neckDepth))
-        p.addLine(to: CGPoint(x: w * 0.58, y: neckDepth))
-        p.addLine(to: CGPoint(x: w * 0.7, y: 0))
-        p.addLine(to: CGPoint(x: w, y: h * 0.1))
-        p.addLine(to: CGPoint(x: w, y: h))
-        p.closeSubpath()
-        return p
-    }
-}
-
-// MARK: - Color darker helper
-
-extension Color {
-    func darker(by amount: Double) -> Color {
-        let ui = UIColor(self)
-        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        ui.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        return Color(UIColor(hue: h, saturation: s, brightness: max(b - CGFloat(amount), 0), alpha: a))
     }
 }
 

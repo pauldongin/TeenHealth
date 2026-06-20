@@ -418,198 +418,125 @@ struct ProfilePage: View {
 struct AvatarPage: View {
     @Binding var avatarConfig: AvatarConfig
 
-    let skinTones: [(String, String)] = [
-        ("#FDEBD0", "Fair"),
-        ("#F5C5A3", "Light"),
-        ("#E59866", "Medium"),
-        ("#C68642", "Tan"),
-        ("#8D5524", "Brown"),
-        ("#4A2311", "Deep")
+    // Emoji organized by vibe
+    let emojiCategories: [(String, [String])] = [
+        ("Faces", ["😊", "😎", "🤩", "😄", "🥳", "😜", "🤓", "😏", "🥸", "🤠", "😺", "🦸"]),
+        ("Active", ["🏃", "🚴", "🏊", "🧘", "💪", "🤸", "⛹️", "🏋️", "🤾", "🧗", "🏄", "🤺"]),
+        ("Animals", ["🦊", "🐼", "🐯", "🦁", "🐨", "🐸", "🐬", "🦋", "🐺", "🦅", "🐙", "🦄"]),
+        ("Chill", ["🌟", "🌈", "🎵", "🎨", "🎮", "📚", "🌙", "☀️", "🌊", "🌸", "🍀", "⚡"])
     ]
-    let hairColors: [(String, String)] = [
-        ("#1C1C1E", "Black"),
-        ("#4A2E1A", "Dark Brown"),
-        ("#8B5E3C", "Brown"),
-        ("#C19A6B", "Blonde"),
-        ("#B7472A", "Auburn"),
-        ("#D3D3D3", "Silver")
-    ]
-    let outfits: [(String, String, String)] = [
-        ("casual",  "Casual",  "tshirt.fill"),
-        ("sporty",  "Sporty",  "figure.run"),
-        ("formal",  "Formal",  "person.fill")
-    ]
-    let outfitColors: [(String, String)] = [
+
+    let bgColors: [(String, String)] = [
         ("#6C5CE7", "Purple"),
         ("#0984E3", "Blue"),
         ("#00B894", "Green"),
         ("#E17055", "Orange"),
         ("#D63031", "Red"),
-        ("#2D3436", "Black")
+        ("#FDCB6E", "Yellow"),
+        ("#2D3436", "Dark"),
+        ("#00CEC9", "Teal")
     ]
+
+    @State private var selectedCategory = 0
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 28) {
-                Text("Create your avatar")
+            VStack(spacing: 24) {
+                Text("Choose your avatar")
                     .font(.thTitle)
                     .foregroundColor(.thText)
-                    .padding(.top, 24)
+                    .padding(.top, 20)
 
                 // ── Live preview ──────────────────────────────────────
-                ZStack {
-                    Circle()
-                        .fill(Color(hex: avatarConfig.outfitColor).opacity(0.12))
-                        .frame(width: 150, height: 150)
-                    AvatarView(config: avatarConfig, size: 140)
+                AvatarView(config: avatarConfig, size: 120)
+                    .shadow(color: Color(hex: avatarConfig.backgroundColor).opacity(0.4), radius: 20, y: 8)
+                    .animation(.spring(response: 0.3), value: avatarConfig.emoji)
+                    .animation(.spring(response: 0.3), value: avatarConfig.backgroundColor)
+
+                // ── Category picker ───────────────────────────────────
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(Array(emojiCategories.enumerated()), id: \.offset) { i, cat in
+                            Button { selectedCategory = i } label: {
+                                Text(cat.0)
+                                    .font(.thCaption)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(selectedCategory == i ? .white : .thText)
+                                    .padding(.horizontal, 16)
+                                    .padding(.vertical, 8)
+                                    .background(selectedCategory == i ? Color.thPrimary : Color(UIColor.secondarySystemGroupedBackground))
+                                    .cornerRadius(20)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 24)
                 }
-                .padding(.vertical, 4)
+
+                // ── Emoji grid ────────────────────────────────────────
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 6), spacing: 12) {
+                    ForEach(emojiCategories[selectedCategory].1, id: \.self) { emoji in
+                        let selected = avatarConfig.emoji == emoji
+                        Text(emoji)
+                            .font(.system(size: 36))
+                            .frame(width: 54, height: 54)
+                            .background(
+                                Circle()
+                                    .fill(selected
+                                          ? Color(hex: avatarConfig.backgroundColor)
+                                          : Color(UIColor.secondarySystemGroupedBackground))
+                            )
+                            .overlay(
+                                Circle()
+                                    .stroke(selected ? Color(hex: avatarConfig.backgroundColor) : Color.clear, lineWidth: 3)
+                            )
+                            .scaleEffect(selected ? 1.1 : 1.0)
+                            .animation(.spring(response: 0.2), value: selected)
+                            .onTapGesture { avatarConfig.emoji = emoji }
+                    }
+                }
+                .padding(.horizontal, 24)
 
                 Divider().padding(.horizontal, 24)
 
-                // ── Skin tone ─────────────────────────────────────────
-                avatarSection(title: "Skin Tone") {
-                    HStack(spacing: 12) {
-                        ForEach(skinTones, id: \.0) { hex, label in
+                // ── Background color ──────────────────────────────────
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Background Color")
+                        .font(.thHeadline)
+                        .foregroundColor(.thText)
+                        .padding(.horizontal, 24)
+
+                    HStack(spacing: 14) {
+                        ForEach(bgColors, id: \.0) { hex, label in
                             VStack(spacing: 4) {
                                 Circle()
                                     .fill(Color(hex: hex))
                                     .frame(width: 40, height: 40)
                                     .overlay(
                                         Circle()
-                                            .stroke(avatarConfig.skinTone == hex
-                                                    ? Color.thPrimary : Color.clear,
-                                                    lineWidth: 3)
+                                            .stroke(avatarConfig.backgroundColor == hex
+                                                    ? Color.white : Color.clear, lineWidth: 3)
                                     )
-                                    .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
-                                Text(label)
-                                    .font(.system(size: 9, weight: .medium))
-                                    .foregroundColor(.thSubtext)
-                            }
-                            .onTapGesture { avatarConfig.skinTone = hex }
-                        }
-                    }
-                }
-
-                // ── Hair color ────────────────────────────────────────
-                avatarSection(title: "Hair Color") {
-                    HStack(spacing: 12) {
-                        ForEach(hairColors, id: \.0) { hex, label in
-                            VStack(spacing: 4) {
-                                Circle()
-                                    .fill(Color(hex: hex))
-                                    .frame(width: 40, height: 40)
                                     .overlay(
-                                        Circle()
-                                            .stroke(avatarConfig.hairColor == hex
-                                                    ? Color.thPrimary : Color.clear,
-                                                    lineWidth: 3)
+                                        avatarConfig.backgroundColor == hex
+                                        ? Image(systemName: "checkmark")
+                                            .font(.system(size: 14, weight: .bold))
+                                            .foregroundColor(.white)
+                                        : nil
                                     )
-                                    .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
+                                    .shadow(color: Color(hex: hex).opacity(0.4), radius: 6, y: 3)
+                                    .scaleEffect(avatarConfig.backgroundColor == hex ? 1.15 : 1.0)
+                                    .animation(.spring(response: 0.2), value: avatarConfig.backgroundColor)
                                 Text(label)
                                     .font(.system(size: 9, weight: .medium))
                                     .foregroundColor(.thSubtext)
                             }
-                            .onTapGesture { avatarConfig.hairColor = hex }
+                            .onTapGesture { avatarConfig.backgroundColor = hex }
                         }
                     }
-                }
-
-                // ── Outfit style ──────────────────────────────────────
-                avatarSection(title: "Outfit Style") {
-                    HStack(spacing: 12) {
-                        ForEach(outfits, id: \.0) { id, label, icon in
-                            let selected = avatarConfig.outfit == id
-                            Button { avatarConfig.outfit = id } label: {
-                                VStack(spacing: 6) {
-                                    Image(systemName: icon)
-                                        .font(.system(size: 22))
-                                        .foregroundColor(selected ? .white : .thPrimary)
-                                    Text(label)
-                                        .font(.thCaption)
-                                        .foregroundColor(selected ? .white : .thText)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 14)
-                                .background(selected ? Color.thPrimary : Color(UIColor.secondarySystemGroupedBackground))
-                                .cornerRadius(14)
-                                .overlay(RoundedRectangle(cornerRadius: 14)
-                                    .stroke(selected ? Color.thPrimary : Color.thBorder, lineWidth: 1.5))
-                            }
-                        }
-                    }
-                }
-
-                // ── Outfit color ──────────────────────────────────────
-                avatarSection(title: "Outfit Color") {
-                    HStack(spacing: 12) {
-                        ForEach(outfitColors, id: \.0) { hex, label in
-                            VStack(spacing: 4) {
-                                Circle()
-                                    .fill(Color(hex: hex))
-                                    .frame(width: 40, height: 40)
-                                    .overlay(
-                                        Circle()
-                                            .stroke(avatarConfig.outfitColor == hex
-                                                    ? Color.white : Color.clear,
-                                                    lineWidth: 3)
-                                    )
-                                    .shadow(color: .black.opacity(0.12), radius: 4, y: 2)
-                                Text(label)
-                                    .font(.system(size: 9, weight: .medium))
-                                    .foregroundColor(.thSubtext)
-                            }
-                            .onTapGesture { avatarConfig.outfitColor = hex }
-                        }
-                    }
-                }
-
-                // ── Glasses toggle ────────────────────────────────────
-                avatarSection(title: "Glasses") {
-                    HStack(spacing: 16) {
-                        glassesOption(label: "None", hasGlasses: false)
-                        glassesOption(label: "Glasses", hasGlasses: true)
-                    }
+                    .padding(.horizontal, 24)
                 }
             }
-            .padding(.horizontal, 24)
             .padding(.bottom, 40)
-        }
-    }
-
-    @ViewBuilder
-    private func avatarSection<Content: View>(title: String, @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(title)
-                .font(.thHeadline)
-                .foregroundColor(.thText)
-            content()
-        }
-    }
-
-    private func glassesOption(label: String, hasGlasses: Bool) -> some View {
-        let selected = avatarConfig.hasGlasses == hasGlasses
-        return Button { avatarConfig.hasGlasses = hasGlasses } label: {
-            HStack(spacing: 10) {
-                if hasGlasses {
-                    Image(systemName: "eyeglasses")
-                        .font(.system(size: 18))
-                        .foregroundColor(selected ? .white : .thPrimary)
-                } else {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(selected ? .white : .thSubtext)
-                }
-                Text(label)
-                    .font(.thBody)
-                    .foregroundColor(selected ? .white : .thText)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 14)
-            .background(selected ? Color.thPrimary : Color(UIColor.secondarySystemGroupedBackground))
-            .cornerRadius(14)
-            .overlay(RoundedRectangle(cornerRadius: 14)
-                .stroke(selected ? Color.thPrimary : Color.thBorder, lineWidth: 1.5))
         }
     }
 }

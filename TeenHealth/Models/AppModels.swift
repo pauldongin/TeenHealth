@@ -104,20 +104,11 @@ enum ConsentType: String, Codable {
 // MARK: - Avatar Config
 
 struct AvatarConfig: Codable {
-    var skinTone: String      // hex
-    var hairColor: String     // hex
-    var hasGlasses: Bool
-    var outfit: String        // "casual" | "sporty" | "formal"
-    var outfitColor: String   // hex
+    var emoji: String           // e.g. "😊"
+    var backgroundColor: String // hex
 
     static var `default`: AvatarConfig {
-        .init(
-            skinTone: "#F5C5A3",
-            hairColor: "#4A2E1A",
-            hasGlasses: false,
-            outfit: "casual",
-            outfitColor: "#6C5CE7"
-        )
+        .init(emoji: "😊", backgroundColor: "#6C5CE7")
     }
 
     var encoded: String {

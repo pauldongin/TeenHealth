@@ -69,7 +69,7 @@ struct TodayView: View {
                     .font(.thTitle)
                     .foregroundColor(.thText)
                 if let user {
-                    Text(user.displayName)
+                    Text(user.displayName.capitalized)
                         .font(.thDisplay)
                         .foregroundColor(.thPrimary)
                 }
@@ -101,20 +101,36 @@ struct TodayView: View {
         HStack(spacing: 14) {
             ZStack {
                 Circle()
-                    .fill(LinearGradient(colors: [.thPrimary, .thAccent], startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: 44, height: 44)
+                    .fill(LinearGradient(
+                        colors: [.thPrimary, .thAccent],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ))
+                    .frame(width: 46, height: 46)
                 Text("AC")
-                    .font(.system(size: 14, weight: .bold))
+                    .font(.system(size: 15, weight: .bold))
                     .foregroundColor(.white)
             }
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Coach Alex")
-                    .font(.thCaption)
-                    .foregroundColor(.thSubtext)
-                    .fontWeight(.semibold)
+            .overlay(alignment: .bottomTrailing) {
+                Circle()
+                    .fill(Color.thSuccess)
+                    .frame(width: 13, height: 13)
+                    .overlay(Circle().stroke(Color.thCard, lineWidth: 2))
+            }
+
+            VStack(alignment: .leading, spacing: 3) {
+                HStack(spacing: 6) {
+                    Text("Coach Alex")
+                        .font(.thCaption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.thText)
+                    Image(systemName: "shield.checkered")
+                        .font(.system(size: 10))
+                        .foregroundColor(.thSuccess)
+                }
                 Text(vm.coachPrompt)
                     .font(.thBody)
-                    .foregroundColor(.thText)
+                    .foregroundColor(.thSubtext)
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
@@ -234,39 +250,54 @@ struct TodayView: View {
 struct GoalRingCard: View {
     let goal: Goal
 
+    private var isDone: Bool { goal.isCompletedToday }
+    private var goalColor: Color { isDone ? .thSuccess : Color.goalColor(for: goal.type) }
+
     var body: some View {
         VStack(spacing: 10) {
             ZStack {
                 ProgressRing(
-                    progress: goal.completionPercent,
-                    color: Color.goalColor(for: goal.type),
+                    progress: min(goal.completionPercent, 1.0),
+                    color: goalColor,
                     size: 68,
                     lineWidth: 8
                 )
-                Image(systemName: goal.type.icon)
-                    .font(.system(size: 22, weight: .semibold))
-                    .foregroundColor(Color.goalColor(for: goal.type))
+                if isDone {
+                    // Completed: show checkmark
+                    ZStack {
+                        Circle()
+                            .fill(Color.thSuccess.opacity(0.15))
+                            .frame(width: 44, height: 44)
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.thSuccess)
+                    }
+                } else {
+                    Image(systemName: goal.type.icon)
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundColor(goalColor)
+                }
             }
             VStack(spacing: 2) {
                 Text(goal.title)
                     .font(.thCaption)
                     .fontWeight(.semibold)
-                    .foregroundColor(.thText)
+                    .foregroundColor(isDone ? .thSuccess : .thText)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
-                Text("\(Int(goal.progress)) / \(Int(goal.target)) \(goal.unit)")
+                Text(isDone ? "Done! 🎉" : "\(Int(goal.progress)) / \(Int(goal.target)) \(goal.unit)")
                     .font(.system(size: 10, weight: .medium, design: .rounded))
-                    .foregroundColor(.thSubtext)
+                    .foregroundColor(isDone ? .thSuccess : .thSubtext)
             }
         }
         .padding(14)
         .frame(maxWidth: .infinity)
-        .thCard()
+        .background(isDone ? Color.thSuccess.opacity(0.08) : Color.thCard)
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)
         .overlay(
-            goal.isCompletedToday
-            ? RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.thSuccess, lineWidth: 2)
-            : nil
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(isDone ? Color.thSuccess : Color.clear, lineWidth: 2)
         )
     }
 }
