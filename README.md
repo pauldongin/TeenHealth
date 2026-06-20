@@ -19,7 +19,9 @@ The app targets the lifestyle factors most supported by evidence: meal logging, 
 
 ## Screenshots
 
-> Screenshots coming soon.
+<img src="screenshots/today.png" width="300" alt="Today Dashboard" />
+
+> More screenshots coming soon — some features are currently being refined and fixed.
 
 ---
 
